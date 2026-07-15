@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bernardo Lopez — Senior Scrum Master &amp; Agile Coach</title>
+<meta name="description" content="Bernardo Lopez — Senior Scrum Master, Agile Coach, and Technical Project Manager. Scaling Agile frameworks and turning around underperforming engineering teams across banking and retail.">
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --bg:#F7F9FC;
+  --bg-1:#FBFCFE;
+  --surface:#FFFFFF;
+  --surface-2:#F1F4F9;
+  --line:#E4E9F1;
+  --line-soft:#ECEFF5;
+  --text-hi:#1F2937;
+  --text-mid:#5B6472;
+  --text-low:#8A93A3;
+  --accent:#3E63DD;
+  --accent-dim:#2947A8;
+  --accent-glow:rgba(62,99,221,0.20);
+  --accent-soft:rgba(62,99,221,0.08);
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:22px;
+  --shadow-sm:0 1px 2px rgba(16,24,40,0.05);
+  --shadow-md:0 12px 28px -12px rgba(16,24,40,0.14);
+  --shadow-lg:0 30px 70px -24px rgba(16,24,40,0.20);
+  --ff-display: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --ff-body: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --ff-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Consolas, monospace;
+  --ease: cubic-bezier(.22,1,.36,1);
+  --content-width:640px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text-hi);
+  font-family:var(--ff-body);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+h1,h2,h3,h4{margin:0;font-family:var(--ff-display);letter-spacing:-0.02em;}
+p{margin:0;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+@media (max-width:640px){.wrap{padding:0 20px;}}
+
+.eyebrow{
+  font-family:var(--ff-mono);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:"";
+  width:22px;height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px;}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 0;
+  transition:padding .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  padding:12px 0;
+  background:rgba(247,249,252,0.82);
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1180px; margin:0 auto;padding:0 32px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+@media (max-width:640px){.nav-inner{padding:0 20px;}}
+.nav-mark{
+  font-family:var(--ff-mono);
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.02em;
+  display:flex;align-items:center;gap:9px;
+  color:var(--text-hi);
+}
+.nav-mark .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 10px 2px var(--accent-glow);
+}
+.nav-links{
+  display:flex;align-items:center;gap:2px;
+  list-style:none;margin:0;padding:0;
+}
+.nav-links a{
+  font-size:13.5px;
+  color:var(--text-mid);
+  padding:9px 14px;
+  border-radius:20px;
+  transition:color .25s, background .25s;
+  position:relative;
+}
+.nav-links a:hover{color:var(--text-hi);background:var(--surface-2);}
+.nav-links a.active{color:var(--accent);}
+.nav-cta{
+  font-family:var(--ff-mono);
+  font-size:12.5px;
+  color:#fff;
+  background:var(--accent);
+  padding:9px 16px;
+  border-radius:20px;
+  font-weight:600;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 24px -8px var(--accent-glow);}
+
+.burger{
+  display:none;
+  width:38px;height:38px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface);
+  align-items:center;justify-content:center;
+  flex-direction:column;gap:4px;
+}
+.burger span{width:16px;height:1.5px;background:var(--text-hi);transition:transform .3s var(--ease), opacity .3s var(--ease);}
+.burger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+
+.mobile-menu{
+  position:fixed;inset:0;z-index:99;
+  background:rgba(247,249,252,0.98);
+  backdrop-filter:blur(10px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s var(--ease);
+}
+.mobile-menu.open{opacity:1;pointer-events:auto;}
+.mobile-menu a{font-size:26px;font-family:var(--ff-display);color:var(--text-hi);padding:14px 0;}
+.mobile-menu a:hover{color:var(--accent);}
+
+@media (max-width:900px){
+  .nav-links,.nav-cta{display:none;}
+  .burger{display:flex;}
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:140px 0 80px;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(60% 50% at 78% 18%, rgba(62,99,221,0.10), transparent 60%),
+    radial-gradient(45% 40% at 10% 90%, rgba(62,99,221,0.06), transparent 60%),
+    linear-gradient(180deg, var(--bg-1), var(--bg));
+}
+.hero-glow{
+  position:absolute;
+  width:520px;height:520px;
+  border-radius:50%;
+  background:radial-gradient(circle, var(--accent-glow), transparent 70%);
+  filter:blur(10px);
+  top:-140px;right:-120px;
+  z-index:0;
+  opacity:.6;
+  pointer-events:none;
+  transition:transform .3s ease-out;
+}
+#pathCanvas{
+  position:absolute;inset:0;z-index:1;
+  width:100%;height:100%;
+  opacity:.8;
+}
+.hero-inner{
+  position:relative;z-index:2;
+  width:100%;
+}
+.hero-kicker{
+  font-family:var(--ff-mono);
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:26px;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px 2px var(--accent-glow);}
+.hero h1{
+  font-size:clamp(44px, 7.4vw, 88px);
+  font-weight:700;
+  line-height:1.0;
+  max-width:15ch;
+  color:var(--text-hi);
+}
+.hero-sub{
+  margin-top:22px;
+  font-size:clamp(15px,2vw,18px);
+  color:var(--text-mid);
+  font-family:var(--ff-mono);
+  max-width:var(--content-width);
+  letter-spacing:-.01em;
+}
+.hero-sub b{color:var(--text-hi);font-weight:600;}
+.hero-value{
+  margin-top:26px;
+  font-size:19px;
+  color:var(--text-mid);
+  max-width:var(--content-width);
+  line-height:1.7;
+}
+.hero-value strong{color:var(--text-hi);font-weight:600;}
+.hero-badges{
+  margin-top:24px;
+  display:flex;flex-wrap:wrap;gap:10px;
+}
+.hero-badge{
+  font-family:var(--ff-mono);
+  font-size:12px;
+  color:var(--accent-dim);
+  background:var(--accent-soft);
+  border:1px solid rgba(62,99,221,0.22);
+  padding:6px 12px;
+  border-radius:20px;
+}
+.hero-actions{
+  margin-top:44px;
+  display:flex;gap:14px;flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 26px;
+  border-radius:10px;
+  font-size:14.5px;
+  font-weight:600;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), border-color .25s;
+  border:1px solid transparent;
+}
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+  box-shadow:var(--shadow-md);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 36px -12px var(--accent-glow);}
+.btn-ghost{
+  background:var(--surface);
+  border-color:var(--line);
+  color:var(--text-hi);
+  box-shadow:var(--shadow-sm);
+}
+.btn-ghost:hover{border-color:var(--accent-dim);transform:translateY(-2px);background:var(--surface-2);}
+.btn svg{width:15px;height:15px;}
+
+.scroll-indicator{
+  position:absolute;
+  bottom:36px;left:32px;
+  z-index:2;
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--ff-mono);
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--text-low);
+}
+.scroll-line{
+  width:1px;height:44px;
+  background:linear-gradient(var(--accent), transparent);
+  position:relative;
+  overflow:hidden;
+}
+.scroll-line::after{
+  content:"";
+  position:absolute;top:-100%;left:0;width:100%;height:100%;
+  background:var(--accent);
+  animation:scrollDown 2s var(--ease) infinite;
+}
+@keyframes scrollDown{
+  0%{top:-100%;}
+  60%{top:100%;}
+  100%{top:100%;}
+}
+
+/* ============================================================
+   SECTION SHARED
+   ============================================================ */
+section{position:relative;padding:120px 0;}
+@media (max-width:640px){section{padding:88px 0;}}
+.section-head{
+    max-width:var(--content-width);
+    margin-bottom:64px;
+}
+.section-head h2{
+  font-size:clamp(30px,4.4vw,44px);
+  font-weight:700;
+}
+.section-head p{
+  margin-top:16px;
+  color:var(--text-mid);
+  font-size:16.5px;
+  line-height:1.7;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ============================================================
+   BUILD (feature cards)
+   ============================================================ */
+.build-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+@media (max-width:900px){.build-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:560px){.build-grid{grid-template-columns:1fr;}}
+.build-card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:32px 28px;
+  box-shadow:var(--shadow-sm);
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
+}
+.build-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--accent-dim);}
+.build-icon{
+  width:44px;height:44px;
+  border-radius:11px;
+  background:var(--accent-soft);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.build-icon svg{width:22px;height:22px;}
+.build-card h3{font-size:18px;font-weight:700;margin-bottom:10px;}
+.build-card p{color:var(--text-mid);font-size:14.5px;line-height:1.65;}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-grid{
+  display:grid;
+  grid-template-columns:0.85fr 1.15fr;
+  gap:72px;
+  align-items:start;
+}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:48px;}}
+
+.photo-frame{
+  position:relative;
+  aspect-ratio:4/5;
+  border-radius:var(--radius-lg);
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.photo-placeholder{
+  position:relative;z-index:1;
+  text-align:center;
+  color:var(--text-low);
+  font-family:var(--ff-mono);
+  font-size:12.5px;
+  letter-spacing:.06em;
+}
+.photo-placeholder .initials{
+  width:96px;height:96px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  background:var(--accent-soft);
+  border:1px solid rgba(62,99,221,0.3);
+  color:var(--accent-dim);
+  font-family:var(--ff-display);
+  font-weight:700;
+  font-size:32px;
+  display:flex;align-items:center;justify-content:center;
+}
+.photo-frame .corner{
+  position:absolute;width:18px;height:18px;
+  border-color:var(--accent);
+  opacity:.5;
+}
+.corner.tl{top:16px;left:16px;border-top:2px solid;border-left:2px solid;}
+.corner.br{bottom:16px;right:16px;border-bottom:2px solid;border-right:2px solid;}
+
+.about-copy p{color:var(--text-mid);font-size:16.5px;line-height:1.8;}
+.about-copy p + p{margin-top:18px;}
+.about-copy .lede{color:var(--text-hi);font-size:19px;line-height:1.6;}
+
+.problems-head{
+  margin-top:52px;
+  font-family:var(--ff-mono);
+  font-size:11.5px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--text-low);
+  margin-bottom:16px;
+}
+.problems-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+}
+@media (max-width:520px){.problems-grid{grid-template-columns:1fr;}}
+.problem-cell{
+  background:var(--surface);
+  padding:18px 20px;
+  display:flex;align-items:center;gap:12px;
+  font-size:14.5px;
+  color:var(--text-hi);
+  font-weight:600;
+}
+.problem-cell svg{width:16px;height:16px;color:var(--accent);flex-shrink:0;}
+
+/* ============================================================
+   CASE STUDIES
+   ============================================================ */
+.module-tag{
+  font-family:var(--ff-mono);
+  font-size:11.5px;
+  letter-spacing:.08em;
+  color:var(--accent-dim);
+  background:var(--accent-soft);
+  border:1px solid rgba(62,99,221,0.22);
+  padding:4px 10px;
+  border-radius:5px;
+  display:inline-block;
+}
+
+.project-list{display:flex;flex-direction:column;gap:28px;}
+.project-card{
+  display:grid;
+  grid-template-columns:1.05fr 1.3fr;
+  gap:0;
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  background:var(--surface);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition:border-color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.project-card:hover{
+  border-color:var(--accent-dim);
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+}
+@media (max-width:860px){.project-card{grid-template-columns:1fr;}}
+
+.project-media{
+  position:relative;
+  background:
+    radial-gradient(120% 100% at 0% 0%, rgba(62,99,221,0.10), transparent 60%),
+    var(--surface-2);
+  min-height:280px;
+  display:flex;align-items:center;justify-content:center;
+  border-right:1px solid var(--line);
+  overflow:hidden;
+}
+.project-media svg{width:96px;height:96px;color:var(--accent);opacity:.5;}
+@media (max-width:860px){.project-media{border-right:none;border-bottom:1px solid var(--line);min-height:180px;}}
+.grid-overlay{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:28px 28px;
+  mask-image:radial-gradient(circle at center, black, transparent 75%);
+}
+
+.project-body{padding:38px 40px;display:flex;flex-direction:column;}
+@media (max-width:640px){.project-body{padding:28px 24px;}}
+.project-body h3{font-size:23px;margin-top:14px;margin-bottom:18px;}
+.project-block{margin-bottom:16px;}
+.project-block h4{
+  font-family:var(--ff-mono);
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--text-low);
+  margin-bottom:6px;
+}
+.project-block p{color:var(--text-mid);font-size:14.5px;line-height:1.65;}
+.project-results{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin:6px 0 20px;
+}
+.result-chip{
+  font-family:var(--ff-mono);
+  font-size:12.5px;
+  color:var(--accent-dim);
+  background:var(--accent-soft);
+  border:1px solid rgba(62,99,221,0.22);
+  padding:6px 11px;
+  border-radius:20px;
+}
+.tech-row{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-bottom:0;
+}
+.tech-pill{
+  font-size:12px;
+  color:var(--text-low);
+  border:1px solid var(--line);
+  padding:5px 10px;
+  border-radius:5px;
+  font-family:var(--ff-mono);
+}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.timeline{position:relative;padding-left:0;}
+.tl-line{
+  position:absolute;left:11px;top:6px;bottom:6px;width:1px;
+  background:linear-gradient(var(--accent), var(--line) 90%);
+}
+.tl-item{
+  position:relative;
+  padding-left:44px;
+  margin-bottom:56px;
+}
+.tl-item:last-child{margin-bottom:0;}
+.tl-dot{
+  position:absolute;left:0;top:4px;
+  width:24px;height:24px;
+  border-radius:50%;
+  background:var(--surface);
+  border:1px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;
+}
+.tl-dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px 2px var(--accent-glow);}
+.tl-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:6px;}
+.tl-head h3{font-size:20px;}
+.tl-role{font-size:14.5px;color:var(--text-mid);}
+.tl-date{
+  font-family:var(--ff-mono);
+  font-size:12px;
+  color:var(--text-low);
+  margin-left:auto;
+}
+.tl-item ul{margin:14px 0 0;padding-left:18px;color:var(--text-mid);font-size:14.5px;line-height:1.7;}
+.tl-item li{margin-bottom:6px;}
+.tl-item li::marker{color:var(--accent);}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:44px;
+}
+.contact-list{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;}
+.contact-row{
+  display:inline-flex;align-items:center;gap:12px;
+  width:auto;flex:0 1 auto;
+  padding:12px 18px 12px 12px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--surface);
+  box-shadow:var(--shadow-sm);
+  transition:border-color .25s, transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.contact-row:hover{border-color:var(--accent-dim);transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.contact-icon{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--accent-soft);
+  border:1px solid rgba(62,99,221,0.2);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent);flex-shrink:0;
+}
+.contact-icon svg{width:15px;height:15px;}
+.contact-value{font-size:14px;font-weight:600;white-space:nowrap;}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+@media (max-width:860px){.skills-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:520px){.skills-grid{grid-template-columns:1fr;}}
+.skill-card{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  padding:26px 24px;
+  background:var(--surface);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition:border-color .3s, transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.skill-card:hover{border-color:var(--accent-dim);transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.skill-card::after{
+  content:"";
+  position:absolute;left:0;bottom:0;height:2px;width:var(--fill,0%);
+  background:var(--accent);
+  transition:width 1.4s var(--ease);
+}
+.skill-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:10px;}
+.skill-name{font-size:15.5px;font-weight:600;}
+.skill-level{font-family:var(--ff-mono);font-size:11.5px;color:var(--text-low);flex-shrink:0;}
+.skill-desc{font-size:13px;color:var(--text-mid);line-height:1.55;}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{
+  border-top:1px solid var(--line);
+  padding:40px 0;
+}
+.footer-inner{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+}
+.footer-copy{font-size:13px;color:var(--text-low);}
+.footer-links{display:flex;gap:22px;}
+.footer-links a{font-size:13px;color:var(--text-mid);transition:color .2s;}
+.footer-links a:hover{color:var(--accent);}
+</style>
+</head>
+
+<body>
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-mark"><span class="dot"></span>BL / Agile Delivery</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#build">Approach</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Case Studies</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Contact</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home">Home</a>
+  <a href="#build">Approach</a>
+  <a href="#about">About</a>
+  <a href="#work">Case Studies</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-glow" id="heroGlow"></div>
+  <canvas id="pathCanvas" aria-hidden="true"></canvas>
+  <div class="wrap hero-inner">
+    <p class="hero-kicker"><span class="dot"></span>Available for Agile Coach / Scrum Master roles · 100% Remote</p>
+    <h1>Bernardo Lopez</h1>
+    <p class="hero-sub">Senior Scrum Master <b>·</b> Agile Coach <b>·</b> Technical Project Manager</p>
+    <p class="hero-value">I turn stalled engineering organizations into predictable delivery machines. Through <strong>Scrum, Kanban, Nexus, Lean Portfolio Management, and cross-cultural remote leadership</strong> across banking and retail, I build teams that ship — and keep shipping.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">US Permanent Resident</span>
+      <span class="hero-badge">EST / CST / PST overlap</span>
+      <span class="hero-badge">10+ years leading delivery</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#build" class="btn btn-primary">See how I work
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span class="scroll-line"></span>
+    <span>Scroll</span>
+  </div>
+</header>
+
+<main>
+<!-- ============================================================
+     APPROACH
+     ============================================================ -->
+<section id="build">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Approach</p>
+      <h2>I run delivery like a system, not a ritual</h2>
+      <p>Six disciplines, one goal: teams that hit their commitments and organizations that can actually plan around them.</p>
+    </div>
+    <div class="build-grid">
+
+      <div class="build-card reveal">
+        <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l9 4.5-9 4.5-9-4.5L12 2z"/><path d="M3 11.5L12 16l9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></svg></div>
+        <h3>Scaled Agile Frameworks</h3>
+        <p>Scrum, Kanban, Nexus, and Lean Portfolio Management, adapted to how the organization actually works.</p>
+      </div>
+
+      <div class="build-card reveal">
+        <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+        <h3>Team Turnarounds</h3>
+        <p>Diagnosing structural inefficiency and stabilizing sprint commitments within weeks, not quarters.</p>
+      </div>
+
+      <div class="build-card reveal">
+        <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6M9 9h1"/></svg></div>
+        <h3>Governance &amp; Financial Control</h3>
+        <p>Full labor cost estimates and Change Documentation that satisfy Risk, Security, and Data Office without slowing delivery.</p>
+      </div>
+
+      <div class="build-card reveal">
+        <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13.5 13.5 0 010 18M12 3a13.5 13.5 0 000 18"/></svg></div>
+        <h3>Cross-Cultural Remote Leadership</h3>
+        <p>Async cultures built across Chile, India, and the US that respect time zones instead of fighting them.</p>
+      </div>
+
+      <div class="build-card reveal">
+        <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 15l4-6 3 4 5-8"/></svg></div>
+        <h3>Metrics &amp; Predictability Engineering</h3>
+        <p>Converting unpredictable delivery cadences into stable planning engines leadership can forecast against.</p>
+      </div>
+
+      <div class="build-card reveal">
+        <div class="build-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/><path d="M14 14.2c3 .5 5 2.6 5 5.8"/></svg></div>
+        <h3>Up-skilling &amp; Communities of Practice</h3>
+        <p>Enterprise workshops and CoPs that turn 50+ leaders into fluent practitioners, not certificate holders.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="photo-frame">
+          <span class="corner tl"></span>
+          <span class="corner br"></span>
+          <div class="photo-placeholder">
+            <div class="initials">BL</div>
+            Stanton, CA — 100% Remote
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">About</p>
+        <h2 style="font-size:clamp(28px,3.6vw,38px);margin-bottom:26px;">I make delivery predictable</h2>
+        <div class="about-copy">
+          <p class="lede">I've spent 10+ years turning underperforming engineering organizations into disciplined, predictable delivery machines — first in retail at Falabella, now inside two of Latin America's largest banks.</p>
+          <p>At SII Group, embedded with ScotiaBank's corporate banking segment, I direct three engineering teams building corporate web portals, credit origination, and core services, and lead the "Enablers" team that owns the API architecture powering the bank's mobile app. I deployed the Obeya methodology to break down silos between business, architecture, and security units, and manage full labor cost estimation and Change Documentation (CHG) across QA, Risk, Security, and Data Office.</p>
+          <p>At BICE Bank, I ran the enterprise Agility Center of Excellence across five teams, using an Agility Maturity Model to stabilize sprint commitments within three iterations and hit 90%+ OKR achievement in five months. At Falabella, I scaled Lean Value Tree portfolio planning across Chile, India, and Peru, and turned around an offshore/onshore payments hub into a unit with a 100% Sprint Goal execution streak for a full year.</p>
+        </div>
+        <p class="problems-head">Problems I've Solved</p>
+        <div class="problems-grid">
+          <div class="problem-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Unpredictable delivery cadences</div>
+          <div class="problem-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Cross-border team silos</div>
+          <div class="problem-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Change governance overhead</div>
+          <div class="problem-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Offshore/onshore friction</div>
+          <div class="problem-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Portfolio prioritization</div>
+          <div class="problem-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Underperforming teams</div>
+          <div class="problem-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Async culture design</div>
+          <div class="problem-cell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>OKR &amp; metrics tracking</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CASE STUDIES
+     ============================================================ -->
+<section id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Track Record</p>
+      <h2>Featured turnarounds</h2>
+      <p>Three programs, each built to solve a specific delivery problem — not just to run another ceremony.</p>
+    </div>
+
+    <div class="project-list">
+
+      <article class="project-card reveal">
+        <div class="project-media">
+          <div class="grid-overlay"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <div class="project-body">
+          <span class="module-tag">Program 01 — Enterprise Governance</span>
+          <h3>Obeya-driven governance across corporate banking</h3>
+          <div class="project-block">
+            <h4>Business challenge</h4>
+            <p>Business, architecture, and security units at ScotiaBank's corporate banking segment operated in silos, slowing strategic decisions and creating friction in the Change Documentation lifecycle.</p>
+          </div>
+          <div class="project-block">
+            <h4>My role</h4>
+            <p>Agile Facilitator / Scrum Master / Project Manager directing three engineering teams (up to five historically) across corporate web portals, credit origination, and core services — plus ownership of the "Enablers" API Hub team powering the bank's enterprise mobile app.</p>
+          </div>
+          <div class="project-block">
+            <h4>Process</h4>
+            <p>Deployed the Obeya methodology to centralize visibility across units, then rebuilt labor cost estimation and CHG documentation processes so QA, Risk, Security, and Data Office could move in step instead of in sequence.</p>
+          </div>
+          <div class="project-results">
+            <span class="result-chip">3 engineering teams directed</span>
+            <span class="result-chip">Cross-unit silos eliminated</span>
+            <span class="result-chip">CHG lifecycle streamlined</span>
+          </div>
+          <div class="tech-row">
+            <span class="tech-pill">Obeya Methodology</span>
+            <span class="tech-pill">Jira</span>
+            <span class="tech-pill">Confluence</span>
+            <span class="tech-pill">Azure DevOps</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-media">
+          <div class="grid-overlay"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 5-7"/><circle cx="18" cy="6" r="1.5"/></svg>
+        </div>
+        <div class="project-body">
+          <span class="module-tag">Program 02 — Delivery Turnaround</span>
+          <h3>90%+ OKR achievement in five months</h3>
+          <div class="project-block">
+            <h4>Business challenge</h4>
+            <p>Five development teams inside BICE Bank's Agility Center of Excellence had unstable sprint commitments and inconsistent delivery frameworks, undermining confidence in planning.</p>
+          </div>
+          <div class="project-block">
+            <h4>My role</h4>
+            <p>Enterprise Agile Coach overseeing five teams, applying an Agility Maturity Model to diagnose structural inefficiencies team by team.</p>
+          </div>
+          <div class="project-block">
+            <h4>Process</h4>
+            <p>Stabilized sprint commitments within three iterations, restructured metrics tracking to convert unpredictable cadences into a reliable planning engine, and designed enterprise workshops on Scrum, Kanban, user story slicing, and OKR alignment.</p>
+          </div>
+          <div class="project-results">
+            <span class="result-chip">90%+ OKR achievement</span>
+            <span class="result-chip">Stable within 3 iterations</span>
+            <span class="result-chip">Enterprise upskilling delivered</span>
+          </div>
+          <div class="tech-row">
+            <span class="tech-pill">Agility Maturity Model</span>
+            <span class="tech-pill">OKRs</span>
+            <span class="tech-pill">Scrum</span>
+            <span class="tech-pill">Kanban</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-media">
+          <div class="grid-overlay"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z"/></svg>
+        </div>
+        <div class="project-body">
+          <span class="module-tag">Program 03 — Global Portfolio Scaling</span>
+          <h3>Cross-border scaling &amp; a payments team rescue</h3>
+          <div class="project-block">
+            <h4>Business challenge</h4>
+            <p>Falabella needed scaled portfolio planning across Chile, India, and Peru, while a core payment services hub was underperforming under offshore/onshore friction.</p>
+          </div>
+          <div class="project-block">
+            <h4>My role</h4>
+            <p>Agile Coach &amp; Senior Scrum Master / Project Manager leading corporate adoption of the Lean Value Tree tool for middle and senior management.</p>
+          </div>
+          <div class="project-block">
+            <h4>Process</h4>
+            <p>Coordinated scaled portfolio planning events across three countries, designed an asynchronous working model that respected time zones and cut operational friction, and coached the payments hub to a consecutive 100% Sprint Goal execution rate.</p>
+          </div>
+          <div class="project-results">
+            <span class="result-chip">100% Sprint Goal streak (1 year)</span>
+            <span class="result-chip">3-country portfolio scaling</span>
+            <span class="result-chip">50+ leaders in CoP</span>
+          </div>
+          <div class="tech-row">
+            <span class="tech-pill">Lean Value Tree (LVT)</span>
+            <span class="tech-pill">Cross-Border Async Ops</span>
+            <span class="tech-pill">Agile Community of Practice</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Capabilities</p>
+      <h2>What I bring to the room</h2>
+      <p>Depth in Agile craft, plus the governance and stakeholder range to run it inside a regulated enterprise.</p>
+    </div>
+    <div class="skills-grid" id="skillsGrid">
+      <!-- populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXPERIENCE
+     ============================================================ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Experience</p>
+      <h2>Career path</h2>
+      <p>From application maintenance to enterprise Agile coaching to directing bank-scale delivery — each role built the judgment for the next.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-line"></div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <div class="tl-head">
+          <h3>SII Group — Client: ScotiaBank</h3>
+          <span class="tl-role">Agile Facilitator / Scrum Master / Project Manager</span>
+          <span class="tl-date">2025 – 2026</span>
+        </div>
+        <ul>
+          <li>Manage end-to-end technology initiatives for ScotiaBank's corporate banking segment, directing 3 engineering teams (up to 5 historically) across corporate web portals, credit origination, and core services.</li>
+          <li>Lead the mission-critical "Enablers" team, owning the core API architecture that powers the bank's enterprise mobile app.</li>
+          <li>Deployed the Obeya methodology to centralize visibility and accelerate strategic decision-making across business, architecture, and security units.</li>
+          <li>Build full labor cost estimates and manage Change Documentation (CHG) lifecycles across QA, Risk, Security, and Data Office.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <div class="tl-head">
+          <h3>Gi Group — Client: BICE Bank</h3>
+          <span class="tl-role">Agile Coach / Scrum Master</span>
+          <span class="tl-date">2023 – 2024</span>
+        </div>
+        <ul>
+          <li>Served as enterprise Agile Coach within the Agility Center of Excellence, overseeing 5 development teams to optimize delivery frameworks and toolsets.</li>
+          <li>Applied an Agility Maturity Model to diagnose structural inefficiencies, stabilizing sprint commitments within 3 iterations and reaching 90%+ OKR fulfillment within 5 months.</li>
+          <li>Restructured team metrics tracking, converting unpredictable delivery cadences into a stable, highly predictable planning engine.</li>
+          <li>Designed and facilitated enterprise-wide workshops on Scrum, Kanban, User Story Slicing, Effective Feedback, and OKR alignment.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <div class="tl-head">
+          <h3>Falabella</h3>
+          <span class="tl-role">Agile Coach &amp; Senior Scrum Master / Project Manager</span>
+          <span class="tl-date">2021 – 2023</span>
+        </div>
+        <ul>
+          <li>Led corporate adoption of the Lean Value Tree (LVT) tool for middle/senior management, coordinating scaled portfolio planning events across Chile, India, and Peru.</li>
+          <li>Coached and upskilled an offshore/onshore core payment services hub, achieving a consecutive 100% Sprint Goal execution rate within a year.</li>
+          <li>Designed a cross-border remote working model that optimized overlap times, respected cultural time zones, and eliminated operational friction between Chile and India.</li>
+          <li>Coordinated an Agile Community of Practice for 50+ leaders and defined a user story creation protocol translating business concepts into clean, buildable backlogs.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <div class="tl-head">
+          <h3>TEI LAB</h3>
+          <span class="tl-role">Scrum Master / Agile Project Manager</span>
+          <span class="tl-date">2018 – 2021</span>
+        </div>
+        <ul>
+          <li>Led deployment of Lean Portfolio Management frameworks to prioritize high-value project backlogs, optimizing budget allocation and resource utilization across 5+ teams.</li>
+          <li>Strategized and implemented a corporate Home Office policy and remote tooling infrastructure a full year ahead of the 2019 global pandemic.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <div class="tl-head">
+          <h3>Informat S.A.</h3>
+          <span class="tl-role">Applications Maintenance Leader / Project Manager</span>
+          <span class="tl-date">2016 – 2018</span>
+        </div>
+        <ul>
+          <li>Introduced structured Kanban boards to visualize development queues, streamline business analysis, and optimize engineering capacity — cutting lead time by 20%.</li>
+          <li>Improved deployment quality standards, reducing production-environment bugs from more than 1 per software release to 1 every 3 deployments.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="eyebrow">Contact</p>
+        <h2 style="font-size:clamp(28px,3.6vw,38px);">Let's talk about your team's next delivery problem.</h2>
+        <p style="margin-top:16px;color:var(--text-mid);font-size:16px;line-height:1.7;">Open to Senior Scrum Master, Agile Coach, and Technical Project Manager roles — 100% remote, EST/CST/PST overlap.</p>
+
+        <div class="contact-list">
+          <a class="contact-row" href="#" id="copyEmailBtn">
+            <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4V4z"/><path d="M4 6l8 7 8-7"/></svg></span>
+            <span class="contact-value">Copy Email</span>
+          </a>
+          <a class="contact-row" href="tel:+16576259697">
+            <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2.1L8 9.7a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z"/></svg></span>
+            <span class="contact-value">+1 (657) 625-9697</span>
+          </a>
+          <a class="contact-row" href="https://linkedin.com/in/bernardolg" target="_blank" rel="noopener">
+            <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 00-4 0"/></svg></span>
+            <span class="contact-value">LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p class="footer-copy">© <span id="year"></span> Bernardo Lopez. Built by hand — HTML, CSS &amp; JavaScript only.</p>
+    <div class="footer-links">
+      <a href="#" id="copyEmailBtn2">Email</a>
+      <a href="https://linkedin.com/in/bernardolg" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#home">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Year ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Sticky nav ---------- */
+  var nav = document.getElementById('mainNav');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main section, header.hero'));
+  var navAnchors = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+
+  function onScroll(){
+    if(window.scrollY > 40){ nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+    updateActiveLink();
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  function updateActiveLink(){
+    var scrollPos = window.scrollY + 140;
+    var current = null;
+    sections.forEach(function(s){
+      if(s.offsetTop <= scrollPos){ current = s.id; }
+    });
+    navAnchors.forEach(function(a){
+      var href = a.getAttribute('href').replace('#','');
+      a.classList.toggle('active', href === current);
+    });
+  }
+
+  /* ---------- Mobile menu ---------- */
+  var burger = document.getElementById('burger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', function(){
+    var open = mobileMenu.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileMenu.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', false);
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ---------- Scroll reveal ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reducedMotion){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -60px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- Skills data + render ---------- */
+  var skills = [
+    {name:'Scaled Agile Frameworks', level:'Expert', desc:'Scrum, Kanban, Nexus, and Lean Portfolio Management adapted to real organizational constraints.', fill:95},
+    {name:'Agile Coaching &amp; Team Turnarounds', level:'Expert', desc:'Diagnosing structural inefficiency and rebuilding sprint predictability from the ground up.', fill:93},
+    {name:'Obeya &amp; Cross-Unit Governance', level:'Advanced', desc:'Centralizing visibility across business, architecture, and security units to speed decisions.', fill:88},
+    {name:'Change &amp; Financial Governance', level:'Advanced', desc:'Full labor cost estimation and Change Documentation (CHG) across QA, Risk, and Security.', fill:87},
+    {name:'Cross-Cultural Remote Leadership', level:'Expert', desc:'Building async cultures across the US, LATAM, and India that respect time zones.', fill:92},
+    {name:'Metrics &amp; OKR Engineering', level:'Advanced', desc:'Converting unstable delivery cadences into forecastable planning engines.', fill:89},
+    {name:'Stakeholder &amp; Executive Communication', level:'Advanced', desc:'Aligning engineering roadmaps with corporate strategy under pressure.', fill:86},
+    {name:'Delivery Tooling', level:'Proficient', desc:'Jira, Confluence, and Azure DevOps configured to keep distributed teams in sync.', fill:80},
+    {name:'Up-skilling &amp; Communities of Practice', level:'Advanced', desc:'Designing enterprise workshops that build fluent practitioners, not certificate holders.', fill:85},
+  ];
+  var grid = document.getElementById('skillsGrid');
+  skills.forEach(function(s, i){
+    var card = document.createElement('div');
+    card.className = 'skill-card reveal';
+    card.style.setProperty('--fill', s.fill + '%');
+    card.innerHTML =
+      '<div class="skill-top"><span class="skill-name">'+s.name+'</span><span class="skill-level">'+s.level+'</span></div>' +
+      '<p class="skill-desc">'+s.desc+'</p>';
+    grid.appendChild(card);
+  });
+  if('IntersectionObserver' in window && !reducedMotion){
+    var skillIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in'); skillIo.unobserve(entry.target); }
+      });
+    }, {threshold:0.15});
+    document.querySelectorAll('#skillsGrid .skill-card').forEach(function(el){ skillIo.observe(el); });
+  } else {
+    document.querySelectorAll('#skillsGrid .skill-card').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  document.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+  });
+
+  /* ---------- Hero mouse-reactive glow ---------- */
+  var glow = document.getElementById('heroGlow');
+  var heroEl = document.querySelector('.hero');
+  if(!reducedMotion){
+    heroEl.addEventListener('mousemove', function(e){
+      var rect = heroEl.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      glow.style.transform = 'translate(' + (x*0.12 - 60) + 'px, ' + (y*0.12 - 60) + 'px)';
+    });
+  }
+
+  /* ---------- Hero canvas: delivery network ---------- */
+  var canvas = document.getElementById('pathCanvas');
+  var ctx = canvas.getContext('2d');
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var W, H, nodes = [];
+  var mouse = {x:-9999, y:-9999};
+
+  function resize(){
+    W = canvas.parentElement.offsetWidth;
+    H = canvas.parentElement.offsetHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W+'px'; canvas.style.height = H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    initNodes();
+  }
+
+  function initNodes(){
+    nodes = [];
+    var count = Math.round((W*H) / 42000);
+    count = Math.max(14, Math.min(count, 34));
+    for(var i=0;i<count;i++){
+      nodes.push({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        vx: (Math.random()-0.5)*0.15,
+        vy: (Math.random()-0.5)*0.15,
+        r: Math.random()*1.6 + 1.2
+      });
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var maxDist = Math.min(180, W*0.16);
+
+    for(var i=0;i<nodes.length;i++){
+      var n = nodes[i];
+      if(!reducedMotion){
+        n.x += n.vx; n.y += n.vy;
+        if(n.x < 0 || n.x > W) n.vx *= -1;
+        if(n.y < 0 || n.y > H) n.vy *= -1;
+
+        var dx = mouse.x - n.x, dy = mouse.y - n.y;
+        var d2 = dx*dx + dy*dy;
+        if(d2 < 26000){
+          var f = (1 - d2/26000) * 0.5;
+          n.x -= dx*f*0.03; n.y -= dy*f*0.03;
+        }
+      }
+    }
+
+    for(var i=0;i<nodes.length;i++){
+      for(var j=i+1;j<nodes.length;j++){
+        var a = nodes[i], b = nodes[j];
+        var dx = a.x-b.x, dy = a.y-b.y;
+        var dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < maxDist){
+          var op = (1 - dist/maxDist) * 0.22;
+          ctx.strokeStyle = 'rgba(62,99,221,' + op + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    for(var i=0;i<nodes.length;i++){
+      var n = nodes[i];
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(62,99,221,0.45)';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r+3, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(62,99,221,0.08)';
+      ctx.fill();
+    }
+
+    if(!reducedMotion){ requestAnimationFrame(draw); }
+  }
+
+  window.addEventListener('resize', resize);
+  heroEl.addEventListener('mousemove', function(e){
+    var rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+  heroEl.addEventListener('mouseleave', function(){ mouse.x = -9999; mouse.y = -9999; });
+
+  resize();
+  draw();
+  if(reducedMotion){
+    draw();
+  }
+
+})();
+</script>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  function wireCopy(id){
+    const b=document.getElementById(id);
+    if(b){b.addEventListener("click",async e=>{
+      e.preventDefault();
+      const v=b.querySelector(".contact-value");
+      const label = v ? v.textContent : null;
+      const o=label;
+      try{
+        await navigator.clipboard.writeText("bernardolg@gmail.com");
+        if(v){ v.textContent="✓ Email copied!"; setTimeout(()=>v.textContent=o,2000); }
+      }catch(e){ prompt("Copy email:","bernardolg@gmail.com"); }
+    });}
+  }
+  wireCopy("copyEmailBtn");
+  wireCopy("copyEmailBtn2");
+});
+</script>
+</body>
+</html>
