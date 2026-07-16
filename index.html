@@ -1042,7 +1042,7 @@ footer{
     <div class="contact-grid">
       <div class="reveal">
         <p class="eyebrow">Contact</p>
-        <h2 style="font-size:clamp(28px,3.6vw,38px);">Let's talk about your team's next delivery problem.</h2>
+        <h2 style="font-size:clamp(28px,3.6vw,38px);">I turn stalled delivery into predictable systems</h2>
         <p style="margin-top:16px;color:var(--text-mid);font-size:16px;line-height:1.7;">Open to Senior Scrum Master, Agile Coach, and Technical Project Manager roles — 100% remote, EST/CST/PST overlap.</p>
 
         <div class="contact-list">
@@ -1144,23 +1144,22 @@ footer{
 
   /* ---------- Skills data + render ---------- */
   var skills = [
-    {name:'Scaled Agile Frameworks', level:'Expert', desc:'Scrum, Kanban, Nexus, and Lean Portfolio Management adapted to real organizational constraints.', fill:95},
-    {name:'Agile Coaching &amp; Team Turnarounds', level:'Expert', desc:'Diagnosing structural inefficiency and rebuilding sprint predictability from the ground up.', fill:93},
-    {name:'Obeya &amp; Cross-Unit Governance', level:'Advanced', desc:'Centralizing visibility across business, architecture, and security units to speed decisions.', fill:88},
-    {name:'Change &amp; Financial Governance', level:'Advanced', desc:'Full labor cost estimation and Change Documentation (CHG) across QA, Risk, and Security.', fill:87},
-    {name:'Cross-Cultural Remote Leadership', level:'Expert', desc:'Building async cultures across the US, LATAM, and India that respect time zones.', fill:92},
-    {name:'Metrics &amp; OKR Engineering', level:'Advanced', desc:'Converting unstable delivery cadences into forecastable planning engines.', fill:89},
-    {name:'Stakeholder &amp; Executive Communication', level:'Advanced', desc:'Aligning engineering roadmaps with corporate strategy under pressure.', fill:86},
-    {name:'Delivery Tooling', level:'Proficient', desc:'Jira, Confluence, and Azure DevOps configured to keep distributed teams in sync.', fill:80},
-    {name:'Up-skilling &amp; Communities of Practice', level:'Advanced', desc:'Designing enterprise workshops that build fluent practitioners, not certificate holders.', fill:85},
+    {name:'Scaled Agile Frameworks', desc:'Scrum, Kanban, Nexus, and Lean Portfolio Management adapted to real organizational constraints.'},
+    {name:'Agile Coaching &amp; Team Turnarounds', desc:'Diagnosing structural inefficiency and rebuilding sprint predictability from the ground up.'},
+    {name:'Obeya &amp; Cross-Unit Governance', desc:'Centralizing visibility across business, architecture, and security units to speed decisions.'},
+    {name:'Change &amp; Financial Governance', desc:'Full labor cost estimation and Change Documentation (CHG) across QA, Risk, and Security.'},
+    {name:'Cross-Cultural Remote Leadership', desc:'Building async cultures across the US, LATAM, and India that respect time zones.'},
+    {name:'Metrics &amp; OKR Engineering', desc:'Converting unstable delivery cadences into forecastable planning engines.'},
+    {name:'Stakeholder &amp; Executive Communication', desc:'Aligning engineering roadmaps with corporate strategy under pressure.'},
+    {name:'Delivery Tooling', desc:'Jira, Confluence, and Azure DevOps configured to keep distributed teams in sync.'},
+    {name:'Up-skilling &amp; Communities of Practice', desc:'Designing enterprise workshops that build fluent practitioners, not certificate holders.'},
   ];
   var grid = document.getElementById('skillsGrid');
   skills.forEach(function(s, i){
     var card = document.createElement('div');
     card.className = 'skill-card reveal';
-    card.style.setProperty('--fill', s.fill + '%');
     card.innerHTML =
-      '<div class="skill-top"><span class="skill-name">'+s.name+'</span><span class="skill-level">'+s.level+'</span></div>' +
+      '<div class="skill-top"><span class="skill-name">'+s.name+'</span></div>' +
       '<p class="skill-desc">'+s.desc+'</p>';
     grid.appendChild(card);
   });
@@ -1174,10 +1173,6 @@ footer{
   } else {
     document.querySelectorAll('#skillsGrid .skill-card').forEach(function(el){ el.classList.add('in'); });
   }
-
-  document.addEventListener("contextmenu", (event) => {
-      event.preventDefault();
-  });
 
   /* ---------- Hero mouse-reactive glow ---------- */
   var glow = document.getElementById('heroGlow');
